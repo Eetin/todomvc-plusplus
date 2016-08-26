@@ -7,6 +7,7 @@ const Todo = require('../models/todo');
 
 // reset the test database
 before(function(done) {
+  this.timeout(10000);
   db.drop().then(function() {
     return db.sync({ force: true });
   }).then(function() {
@@ -19,6 +20,7 @@ before(function(done) {
 describe('The Todo Model', function() {
 
   it('should accept text for the TODO item', function() {
+    this.timeout(10000);
     let todoText = 'this is a super todo';
     return Todo.create({
       title: todoText
